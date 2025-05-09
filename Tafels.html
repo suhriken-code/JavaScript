@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #uitkomst{
+            border: solid 1px grey;
+            width: 80vw;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tafels</h1>
+    <label>Geef het 1e getal</label><input type="text" id="GetalVoorHoever"><br>
+    <label>Geef het 2e getal</label><input type="text" id="GetalVoorTafel"><br>
+
+    <button onclick="ShowTable()">Geef de tafel</button>
+    <div id="uitkomst">
+    </div>
+</body>
+</html>
+<script>
+    function ShowTable(){
+       let element = document.getElementById("GetalVoorTafel");
+       let keer = document.getElementById("GetalVoorHoever").value;
+       console.log(keer);
+        let tafel = element.value
+        let text  = "";
+        for (let i = 1; i <= keer ; i++) {
+            let getal = i * tafel;
+            text += " De som is  " + i + " x " + tafel + " = " + getal + "<br>";
+            
+       
+        }
+        document.getElementById("uitkomst").innerHTML = text
+    }
+</script>

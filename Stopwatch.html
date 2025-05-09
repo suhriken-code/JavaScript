@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #display{
+            height: 74px;
+            background-color: rgb(102, 104, 112);
+            width: 165px;
+            border: 10px dashed rgb(116, 250, 75);
+            border-radius: 7px;
+        padding-left: 30px;
+        padding-top: 20px;
+        font-size: xx-large;
+        }
+        .shedion {
+            width: 200px;
+        }
+
+        .stopwatch {
+            background-image: url(css17_A.png);
+            background-size: 300px;
+            background-repeat: no-repeat;
+            position: absolute;
+            width: 600px;
+            height: 600px;
+        }
+        .test{
+            margin-top: 85px;
+            margin-left: 41px;
+        }
+        .button{
+           
+        margin-top: 25px;
+        margin-left: 15px;
+        
+
+
+        }
+        button{
+            border: none;
+            background: transparent;
+            font-size: 0;
+            margin-left: 7px;
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Working Stopwatch</h2>
+    <div class="stopwatch">
+        <div class="test">
+            <div class="shedion">
+                <div id="display">00:00:00</div>
+            </div>
+            <div class="button">
+                <button onclick="fReset()">reset</button>
+            <button onclick="fStart()" id="start">start</button>
+            <button onclick="fStop()">stop</button> 
+            </div>
+        </div>
+    </div>
+    <script>
+
+        let sec = 0;
+        let ms = 0;
+        let m = 0;
+        let mijnInterval;
+        let running = false;
+
+        function fStart() {
+
+
+            if (running == false) {
+                mijnInterval = setInterval(secTeller, 10);
+                running = true;
+
+            }
+            else {
+                clearInterval(mijnInterval)
+            running = false;
+            document.getElementById("start").disabled = false;
+            }
+        }
+
+        function fReset() {
+            sec = 0;
+            ms = 0;
+            m = 0;
+            document.getElementById("display").innerHTML = m + "0:0" + sec + ":0" + ms + "";
+        }
+
+        function secTeller() {
+            let output = "";
+
+            ms += 10;
+
+            if (ms >= 1000) {
+                ms = 0;
+                sec += 1;
+                if (sec >= 60) {
+                    sec = 0;
+                    m += 1;
+                }
+
+            }
+
+            if (m < 10) {
+                output += "0";
+            }
+            output += m + ":";
+            if (sec < 10) {
+                output += "0";
+            }
+            output += sec + ":" + ms.toString().slice(0, 2);;
+
+
+
+
+            document.getElementById("display").innerHTML = output;
+
+
+        }
+
+        
+        function fStop()  {
+
+            document.getElementById("display").style.background = "white";
+
+ setTimeout(() => {
+    document.getElementById("display").style.background = "rgb(102, 104, 112)";
+ }, 3000);
+}
+
+        
+    </script>
+</body>
+
+</html>

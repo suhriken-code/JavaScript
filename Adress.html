@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="crashout.css">
+    <script>
+
+        function controleerInput() {
+            let naam = document.getElementById("naam").value;
+            let achternaam = document.getElementById("achternaam").value;
+            let adres = document.getElementById("adres").value;
+            let postcode = document.getElementById("postcode").value;
+            let plaats = document.getElementById("plaats").value;
+            let naamLengte = naam.length;
+            let achternaamLengte = achternaam.length;
+            let adresLengte = adres.length;
+            let plaatsLengte = plaats.length;
+            let regex = /[1-9][0-9][0-9][0-9][A-Z][A-Z]/;
+
+            if (naamLengte == 0){
+                document.getElementById("naam").style.backgroundColor = "#ff999b";
+            } else {
+                document.getElementById("naam").style.backgroundColor = "#99ff99";
+
+            }
+            if (achternaamLengte == 0){
+                document.getElementById("achternaam").style.backgroundColor = "#ff999b"
+            } else {
+                document.getElementById("achternaam").style.backgroundColor = "#99ff99";
+
+            }
+            if (adresLengte == 0){
+                document.getElementById("adres").style.backgroundColor = "#ff999b"
+            } else {
+                document.getElementById("adres").style.backgroundColor = "#99ff99";
+
+            }
+            if (plaatsLengte == 0){
+                document.getElementById("plaats").style.backgroundColor = "#ff999b"
+            } else {
+                document.getElementById("plaats").style.backgroundColor = "#99ff99";
+
+            }
+            if (regex.test(postcode)){
+                document.getElementById("postcode").style.backgroundColor = "#99ff99"
+            } else {
+                document.getElementById("postcode").style.backgroundColor = "#ff999b";
+
+            }
+            
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>*Naam:</th>
+            <td><input type="text" id="naam" placeholder="Voornaam" onkeyup="controleerInput()" />
+                <input type="text" name="tv" id="tv" placeholder="Tv" />
+                <input type="text" id="achternaam" placeholder="Achternaam" onkeyup="controleerInput()" /><br>
+            </td>
+        </tr>
+        <tr>
+            <th>*Adres:</th>
+            <td><input type="text" id="adres" placeholder="Adres" name="adres" onkeyup="controleerInput()"></td>
+        </tr>
+        <tr>
+            <th>*PC Plaats:</th>
+            <td><input onkeyup="controleerInput()" type="text" id="postcode" placeholder="Postcode"><input
+                    onkeyup="controleerInput()" type="text" name="plaats" id="plaats" placeholder="Plaats"></td>
+        </tr>
+        <tr>
+            <th>Telefoon:</th>
+            <td><input type="text" id="telefoon" placeholder="Telefoon"></td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td><input type="text" id="email" placeholder="Email"></td>
+        </tr>
+        <tr>
+            <th>Geslacht:</th>
+            <td><input type="radio" name="geslacht" id="man">Man</td>
+        </tr>
+        <th></th>
+        <td><input type="radio" name="geslacht" id="vrouw">Vrouw</td>
+        </tr>
+        <th></th>
+        <td><input type="radio" name="geslacht" id="vrouw">Anders</td>
+        </tr>
+        <tr>
+            <th>Boyband</th>
+            <td><select name="boyband" id="boyband">
+                    <option value="1D">One Direction</option>
+                    <option value="BSB">Backstreet</option>
+                    <option value="NKOTB">New Kids</option>
+                    <option value="NSYNC">N Sync</option>
+                </select></td>
+        </tr>
+        <tr>
+            <th>Geb.datum:</th>
+            <td><input type="date" id="geboortedatum" name="geboortedatum"></td>
+        </tr>
+        <tr>
+            <th>*Verplichte velden:</th>
+            <td><input type="submit" name="submit_btn" id="submit_btn" value="Verstuur"></td>
+        </tr>
+    </table>
+    <H2></H2>
+    <H2 id="foutmelding"></H2>
+</body>
+
+</html>
